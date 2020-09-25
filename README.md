@@ -1,4 +1,4 @@
-# 101
+# AI Game Agents
 Game Agents
 
 1)Nim Agent Qlearning Agent
