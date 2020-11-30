@@ -7,4 +7,4 @@ Game Agents
 
 3)Minesweeper
 
-4)Sliding Puzzle Solver  (A* Graph Search (needs optiminzations)
+4)Sliding Puzzle Solver  (A* Graph Search (needs optiminzations))
