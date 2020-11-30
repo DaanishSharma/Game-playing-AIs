@@ -9,10 +9,10 @@ import numpy as np
 import copy
 k = int(input())
 box = input()
-box = box.split()
+box = box.split() # input elements of puzzle 0 for blank
 box = np.array([int(i) for i in box]).reshape((k,k))
 
-\
+
 
 box=box.tolist()
 
