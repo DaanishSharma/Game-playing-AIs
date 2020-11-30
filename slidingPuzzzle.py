@@ -1,29 +1,14 @@
 import numpy as np
 import copy
+from queue import PriorityQueue
 k = int(input())
 box = input()
 box = box.split()
 box = np.array([int(i) for i in box]).reshape((k,k))
-
-# In[2]:
-
-
 box=box.tolist()
 
 
-# In[66]:
-
-
 box2 = box
-
-
-# In[3]:
-
-
-from queue import PriorityQueue
-
-
-# In[4]:
 
 
 def cal_md(box):
@@ -37,7 +22,7 @@ def cal_md(box):
     return r
 
 
-# In[50]:
+# In[6]:
 
 
 def mv(move):
@@ -52,24 +37,11 @@ def mv(move):
     
 
 
-# In[5]:
+
+# In[8]
 
 
-class node:
-    def __init__(self,box,parent,steps,move):
-        self.box = box
-        self.parent = parent
-        self.steps = steps
-        self.move = move
-
-
-# In[6]:
-
-
-start = node(box,None,0,None)
-
-
-# In[7]:
+# In[9]:
 
 
 def possibleMoves(box,k):
@@ -89,15 +61,15 @@ def possibleMoves(box,k):
     return ans
 
 
-# In[8]:
+# In[10]:
 
 
+import copy
 def change(box,move):
     box = np.array(box)
     indices=np.where(box == 0)
     i=indices[0][0]
     j=indices[1][0]
-    box = copy.deepcopy(box)
     assert(box[i][j]==0)
     if move == "LEFT":
         assert(box[i][j-1]!=0)
@@ -118,17 +90,16 @@ def change(box,move):
     return box.tolist()
 
 
-# In[26]:
+# In[11]:
 
 
-def bfs(box,k):
+def aStar(box,k):
     target = (np.array([i for i in range(k*k)]).reshape((k,k))).tolist()
     queue = PriorityQueue()
     st = set()
     d = dict()
     d[tuple(np.array(box).flatten())] = (None,0)          #(move,depth)
     queue.put((cal_md(box), box))
-    op_index = 0            
     while(queue):
         top = queue.get()[1] 
         #print(top)
@@ -144,18 +115,11 @@ def bfs(box,k):
                 d[tuple(np.array(newBox).flatten())]=(move,depth)
             
 
-
-# In[27]:
-
-
-l = bfs(box,k)
-
-
-# In[67]:
-
+l = aStar(box,k)
 
 target = (np.array([i for i in range(k*k)]).reshape((k,k))).tolist()
 depth = l[tuple(np.array(target).flatten())][1]
+print(np.array(box2))
 print(depth)
 mvs = list()
 while depth != 0:
@@ -167,12 +131,4 @@ while mvs:
     a = mvs.pop()
     if a != None:
         box2 = change(box2,a)
-        print(box2)
-        #print(a)
-
-
-# In[ ]:
-
-
-
-
+        print(np.array(box2))
