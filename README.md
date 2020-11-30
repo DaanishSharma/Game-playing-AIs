@@ -13,6 +13,8 @@ Example ip output of Sliding Puzzle Solver
 INPUT
 
 ================================
+
+
 3
 
 
