@@ -6,3 +6,5 @@ Game Agents
 2)TicTacToe Minimax Agent
 
 3)Minesweeper
+
+4)Sliding Puzzle Solver  (A* Graph Search (needs optiminzations)
