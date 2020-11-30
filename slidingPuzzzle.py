@@ -1,35 +1,29 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
-import heapq as hq
 import numpy as np
 import copy
 k = int(input())
 box = input()
-box = box.split() # input elements of puzzle 0 for blank
+box = box.split()
 box = np.array([int(i) for i in box]).reshape((k,k))
 
+# In[2]:
 
 
 box=box.tolist()
 
 
-# In[3]:
+# In[66]:
 
 
 box2 = box
 
 
-# In[4]:
+# In[3]:
 
 
 from queue import PriorityQueue
 
 
-# In[5]:
+# In[4]:
 
 
 def cal_md(box):
@@ -43,7 +37,7 @@ def cal_md(box):
     return r
 
 
-# In[6]:
+# In[50]:
 
 
 def mv(move):
@@ -58,7 +52,7 @@ def mv(move):
     
 
 
-# In[7]:
+# In[5]:
 
 
 class node:
@@ -69,13 +63,13 @@ class node:
         self.move = move
 
 
-# In[8]:
+# In[6]:
 
 
 start = node(box,None,0,None)
 
 
-# In[9]:
+# In[7]:
 
 
 def possibleMoves(box,k):
@@ -95,15 +89,15 @@ def possibleMoves(box,k):
     return ans
 
 
-# In[10]:
+# In[8]:
 
 
-import copy
 def change(box,move):
     box = np.array(box)
     indices=np.where(box == 0)
     i=indices[0][0]
     j=indices[1][0]
+    box = copy.deepcopy(box)
     assert(box[i][j]==0)
     if move == "LEFT":
         assert(box[i][j-1]!=0)
@@ -124,7 +118,7 @@ def change(box,move):
     return box.tolist()
 
 
-# In[11]:
+# In[26]:
 
 
 def bfs(box,k):
@@ -137,7 +131,7 @@ def bfs(box,k):
     op_index = 0            
     while(queue):
         top = queue.get()[1] 
-        print(top)
+        #print(top)
         st.add(tuple(np.array(top).flatten()))
         if top == target:
             return d
@@ -151,13 +145,13 @@ def bfs(box,k):
             
 
 
-# In[ ]:
+# In[27]:
 
 
 l = bfs(box,k)
 
 
-# In[ ]:
+# In[67]:
 
 
 target = (np.array([i for i in range(k*k)]).reshape((k,k))).tolist()
