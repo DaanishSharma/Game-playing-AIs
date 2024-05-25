@@ -7,7 +7,7 @@ Game Agents
 
 3)Minesweeper
 
-4)Sliding Puzzle Solver  (A* Graph Search)
+4)Sliding Puzzle Solver  (A* Graph Search) : Always use admissible heuristic to get optimal solution h(n)<=d(n) i.e. h(n) always underestimates the distance/cost to goal  
 
 Example ip output of Sliding Puzzle Solver
 INPUT
