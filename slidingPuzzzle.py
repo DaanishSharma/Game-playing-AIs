@@ -10,17 +10,20 @@ box=box.tolist()
 
 box2 = box
 
-
+#Counts number if misplaced tiles
 def cal_md(box):
-    k=len(box)
-    r=0
+    k = len(box)
+    misplaced_count = 0
     for i in range(k):
-            for j in range(k):
-                x = box[i][j]//k
-                y = box[i][j]%k
-                r+=abs(x-i)+abs(y-j)
-    return r
-
+        for j in range(k):
+            # The value 0 is usually used for the blank space, so it is not counted as misplaced.
+            if box[i][j] != 0:
+                # The goal position for the current tile value box[i][j]
+                goal_value = i * k + j
+                # Check if the current position is different from the goal position
+                if box[i][j] != goal_value:
+                    misplaced_count += 1
+    return misplaced_count
 
 # In[6]:
 
